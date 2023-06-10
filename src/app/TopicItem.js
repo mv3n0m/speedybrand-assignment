@@ -45,7 +45,9 @@ function TopicItem(props) {
             </div>
             <div className='w-[140px] flex justify-end gap-5 items-center'>
                 <LuClipboardEdit size={ 25 } className='text-blue-600 cursor-pointer hover:scale-105' />
-                <FiTrash2 size={ 25 } className='text-red-600 cursor-pointer hover:scale-105' />
+                <FiTrash2 size={ 25 } onClick={ deleteTopic }
+                    className='text-red-600 cursor-pointer hover:scale-105'
+                />
             </div>
         </div>
     )

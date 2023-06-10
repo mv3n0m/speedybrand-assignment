@@ -15,6 +15,7 @@ function Page() {
     }[ modalMode ]
 
     const modalProps = { setModalMode, setActiveCategory }
+    const topicsListProps = { activeCategory, setActiveCategory, setModalMode }
 
     return (
         <div className='py-5 px-10'>
@@ -25,7 +26,7 @@ function Page() {
                     Add Topic
                 </Btn>
             </div>
-            <TopicsList activeCategory={ activeCategory } />
+            <TopicsList { ...topicsListProps } />
             { modalMode && <ModalOption { ...modalProps } /> }
         </div>
     )
