@@ -9,7 +9,7 @@ function TopicsList(props) {
     const [ topics, setTopics ] = useState(results)
     const [ filterBy, setFilterBy ] = useState([])
 
-    const topicItemProps = { setActiveCategory, filterBy, setFilterBy }
+    const topicItemProps = { setActiveCategory, filterBy, setFilterBy, setModalMode }
 
     useEffect(() => {
         if (!activeCategory) return
@@ -38,12 +38,17 @@ function TopicsList(props) {
         setTopics(_topics)
     }, [ filterBy, results ])
 
+    const header = {
+        All: "All",
+        Custom: "Your"
+    }[ activeCategory ]
+
 
     return topics?.length ? (
         <div className='border rounded-md mt-10'>
             <div className='flex justify-between bg-zinc-200 font-semibold'>
                 <h5 className='text-zinc-600 p-5 text-md'>
-                    Recommended Topics
+                    { header || "Recommended" } Topics
                 </h5>
                 {
                     filterBy?.length ? (

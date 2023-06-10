@@ -4,24 +4,27 @@ import { Btn } from 'components'
 import { BiMessageSquareAdd } from 'react-icons/bi'
 import AddModal from './AddModal'
 import TopicsList from './TopicsList'
+import EditorModal from './EditorModal'
 
 
 function Page() {
     const [ activeCategory, setActiveCategory ] = useState(null)
     const [ modalMode, setModalMode ] = useState(null)
+    const { modalKey, modalValues } = modalMode || {}
 
     const ModalOption = {
-        addTopic: AddModal
-    }[ modalMode ]
+        addTopic: AddModal,
+        editor: EditorModal
+    }[ modalKey ]
 
-    const modalProps = { setModalMode, setActiveCategory }
+    const modalProps = { setModalMode, setActiveCategory, modalValues }
     const topicsListProps = { activeCategory, setActiveCategory, setModalMode }
 
     return (
         <div className='py-5 px-10'>
             <div className='flex border-b justify-between items-center'>
                 <Categories activeCategory={ activeCategory } setActiveCategory={ setActiveCategory } />
-                <Btn onClick={() => setModalMode("addTopic")} className="mt-5 flex items-center justify-between">
+                <Btn onClick={() => setModalMode({ modalKey: "addTopic" })} className="mt-5 flex items-center justify-between">
                     <BiMessageSquareAdd size={ 20 }/>
                     Add Topic
                 </Btn>
