@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Categories from './Categories'
+
 
 function Page() {
-  return (
-    <div>Page</div>
-  )
+    const [ activeCategory, setActiveCategory ] = useState(null)
+
+    return (
+        <div className='py-5 px-10'>
+            <Categories activeCategory={ activeCategory } setActiveCategory={ setActiveCategory } />
+        </div>
+    )
 }
 
 export default Page
