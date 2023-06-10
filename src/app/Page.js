@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import Categories from './Categories'
 import { Btn } from 'components'
 import { BiMessageSquareAdd } from 'react-icons/bi'
+import AddModal from './AddModal'
 
 
 function Page() {
     const [ activeCategory, setActiveCategory ] = useState(null)
     const [ modalMode, setModalMode ] = useState(null)
 
+    const ModalOption = {
+        addTopic: AddModal
+    }[ modalMode ]
+
+    const modalProps = { setModalMode, setActiveCategory }
 
     return (
         <div className='py-5 px-10'>
@@ -18,6 +24,7 @@ function Page() {
                     Add Topic
                 </Btn>
             </div>
+            { modalMode && <ModalOption { ...modalProps } /> }
         </div>
     )
 }
