@@ -1,4 +1,5 @@
-from flask import Flask
+import os
+from flask import Flask, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from mongo import MongoWrapper
@@ -12,6 +13,14 @@ CORS(application)
 db = MongoWrapper(os.environ.get("DB"), os.environ.get("DB_URI"))
 
 
-@application.route("/trial", methods=["GET", "POST"])
-def trial():
-    return responsify({"msg": "Trial msg"}, 200)
+@application.route("/add-topic", methods=["POST"])
+def add_topic():
+    request_json = request.json
+
+    db.add("topics", { **request_json, "category": "Custom" })
+    return responsify({"success": "Topic added successfully."}, 200)
+
+
+
+if __name__ == "__main__":
+    application.run(host="0.0.0.0", port=8008, debug=True)
