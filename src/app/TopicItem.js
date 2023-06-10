@@ -2,12 +2,12 @@ import React from 'react'
 import Request from 'helpers/Request'
 import { LuClipboardEdit } from 'react-icons/lu'
 import { FiTrash2 } from 'react-icons/fi'
+import Keywords from './Keywords'
 
 
 function TopicItem(props) {
     const { setActiveCategory, topic, filterBy, setFilterBy, setModalMode } = props
     const { title, keywords, _id, category } = topic
-    const keywordsColors = ["fuchsia", "green", "indigo", "yellow"]
 
     const deleteTopic = async () => {
         try {
@@ -26,22 +26,10 @@ function TopicItem(props) {
     return (
         <div className='border-t py-4 px-3 flex items-center justify-between'>
             <div>
-                <h6 className='text-zinc-700'>
+                <h6 className='text-zinc-700 mb-2'>
                     { title }
                 </h6>
-                <div className='flex gap-2 mt-2'>
-                    {
-                        keywords?.map((keyword, idx) => {
-                            const color = keywordsColors[idx % keywordsColors.length]
-
-                            return (
-                                <div onClick={() => handleFilters(keyword)}
-                                    className={ `cursor-pointer border-2 border-${ color }-400 text-${ color }-500 px-3 rounded-full hover:scale-105` }
-                                >{ keyword }</div>
-                            )
-                        })
-                    }
-                </div>
+                <Keywords keywords={ keywords } onClickFn={ handleFilters }/>
             </div>
             <div className='w-[140px] flex justify-end gap-5 items-center'>
                 <LuClipboardEdit size={ 25 }

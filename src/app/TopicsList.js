@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Request from 'helpers/Request'
 import TopicItem from './TopicItem'
+import Keywords from './Keywords'
 
 
 function TopicsList(props) {
@@ -54,15 +55,7 @@ function TopicsList(props) {
                     filterBy?.length ? (
                         <div className='flex gap-3 items-center text-zinc-500 mx-3'>
                             Filtered by:
-                            <div className='flex gap-3'>
-                                {
-                                    filterBy?.map(item => (
-                                        <div onClick={() => setFilterBy(filterBy.filter(i => item !== i))}
-                                            className='bg-white text-orange-500 rounded-full px-4 hover:scale-105 cursor-pointer border border-orange-500'
-                                        >{ item }</div>
-                                    ))
-                                }
-                            </div>
+                            <Keywords keywords={ filterBy } onClickFn={(item) => setFilterBy(filterBy.filter(i => item !== i))} filtered />
                         </div>
                     ) : <></>
                 }
