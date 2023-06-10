@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Btn, Modal } from 'components'
-import Request from 'services/Request'
+import Request from 'helpers/Request'
 
 
 function AddModal(props) {
@@ -16,6 +16,7 @@ function AddModal(props) {
 
     const addTopic = async () => {
         try {
+            setActiveCategory(null)
             const payload = {
                 title: title?.trim(),
                 keywords: keywords?.split(",").filter(i => i?.length).map(i => i.trim())
