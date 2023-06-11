@@ -2,7 +2,7 @@
 
 #### A user can
 - switch between categories to view different sets of Topics
-- filter topics by pressing one the keywords listed under each topic (filtered keywords appear on top-left, also from where users can remove those filters)
+- filter topics by pressing on the keywords listed under each topic (filtered keywords appear on top-right, also from where users can cancel those filter/s)
 - delete a certain topic by using the Trash icon (restricted to Custom topics only, as of now)
 - add a new topic by providing a topic title and a set of keywords (comma-separated values) in the modal form that pops out when "Add Topic" button is pressed.
 - generate a Blog's content on a particular topic using the Write (Leafpad with pen) icon and selecting a Tone from the dropdown presented in the modal form.
