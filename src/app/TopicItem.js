@@ -26,7 +26,7 @@ function TopicItem(props) {
     return (
         <div className='border-t py-4 px-3 flex items-center justify-between'>
             <div>
-                <h6 className='text-zinc-700 mb-2'>
+                <h6 className='text-orange-500 font-semibold mb-2'>
                     { title }
                 </h6>
                 <Keywords keywords={ keywords } onClickFn={ handleFilters }/>

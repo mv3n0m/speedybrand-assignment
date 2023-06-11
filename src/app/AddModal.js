@@ -19,7 +19,7 @@ function AddModal(props) {
             setActiveCategory(null)
             const payload = {
                 title: title?.trim(),
-                keywords: keywords?.split(",").filter(i => i?.length).map(i => i.trim())
+                keywords: keywords?.split(",").filter(i => i?.trim().length).map(i => i.trim())
             }
             await Request("/add-topic", payload)
             setActiveCategory("Custom")
@@ -44,12 +44,12 @@ function AddModal(props) {
             </div>
             <div className='flex items-start justify-between mt-5 gap-5'>
                 <span className='text-zinc-500 font-semibold'>Keywords: </span>
-                <textarea placeholder='Enter comma-separated values...'
+                <textarea placeholder='Enter comma-separated keywords...'
                     className='border border-orange-400 rounded-md placeholder:text-zinc-400 p-2 w-[500px]'
                     rows={ 3 } cols={ 50 }
                     onChange={e => setKeywords(e.target.value)}
                     required
-                    > </textarea>
+                    ></textarea>
             </div>
             <div className='text-right mt-5'>
                 <Btn text="Add" disabled={ !title?.length || !keywords?.length } onClick={ addTopic } />
