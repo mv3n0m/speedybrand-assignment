@@ -1,6 +1,6 @@
 # SpeedyBrand Assignment
 
-A user can
+#### A user can
 - switch between categories to view different sets of Topics
 - filter topics by pressing one the keywords listed under each topic (filtered keywords appear on top-left, also from where users can remove those filters)
 - delete a certain topic by using the Trash icon (restricted to Custom topics only, as of now)
@@ -18,5 +18,14 @@ A user can
 - React:        ^18.2.0
 - TailwindCSS:  ^3.3.2
 
-
 P.S. Demo URL is available in the description.
+
+## Screengrabs
+
+![Initial page](images/1.png)
+
+![Add topic](images/2.png)
+
+![Generate blog](images/3.png)
+
+![Embed image](images/4.png)
