@@ -19,11 +19,11 @@ function CategoryItem(props) {
 
 
 function Categories(props) {
-    const categories = ["All", "Custom", "ICP", "Mission", "Product"]
-    const { activeCategory, setActiveCategory } = props
+    const { activeCategory, setActiveCategory, categories } = props
+    const _categories = [ "All", ...categories]
 
     useState(() => {
-        if (!activeCategory) setActiveCategory(categories[0])
+        if (!activeCategory) setActiveCategory(_categories[0])
     }, [])
 
     return (
@@ -33,7 +33,7 @@ function Categories(props) {
             </h4>
             <div className='flex gap-4'>
                 {
-                    categories.map((category, idx) => (
+                    _categories.map((category, idx) => (
                         <CategoryItem key={ idx } category={ category } isActive={ activeCategory === category } onClick={() => setActiveCategory(category)} />
                     ))
                 }
