@@ -18,7 +18,7 @@ db = MongoWrapper(os.environ.get("DB"), os.environ.get("DB_URI"))
 def add_topic():
     request_json = request.json
 
-    db.add("topics", { **request_json, "category": "Custom" })
+    db.add("topics", request_json)
     return responsify({"success": "Topic added successfully."}, 200)
 
 
@@ -59,6 +59,27 @@ def generate_blog():
 
     content = content[0]["content"]
     return responsify(content, 200)
+
+
+@application.route("/fetch-categories", methods=["POST"])
+def fetch_categories():
+
+    result = list(map(lambda x: x["category"], db.get("categories", {}, {"_id": 0})))
+
+    return responsify(result, 200)
+
+
+@application.route("/add-category", methods=["POST"])
+def add_category():
+    request_json = request.json
+
+    if "category" not in request_json:
+        return responsify({"error": "category is a required field"}, 400)
+
+    db.add("categories", request_json)
+
+    return responsify({}, 200)
+
 
 
 if __name__ == "__main__":
