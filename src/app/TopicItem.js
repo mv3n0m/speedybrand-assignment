@@ -38,13 +38,9 @@ function TopicItem(props) {
                         setModalMode({ modalKey: "editor", modalValues: { title, keywords, category }})
                     }}
                 />
-                {
-                    category === "Custom" ? (
-                        <FiTrash2 size={ 25 } onClick={ deleteTopic }
-                            className='text-red-600 cursor-pointer hover:scale-105'
-                        />
-                    ) : <></>
-                }
+                <FiTrash2 size={ 25 } onClick={ deleteTopic }
+                    className='text-red-600 cursor-pointer hover:scale-105'
+                />
             </div>
         </div>
     )
